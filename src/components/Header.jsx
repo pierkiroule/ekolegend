@@ -2,10 +2,10 @@ export function Header({ collectedCount, animationsEnabled, onToggleAnimations, 
   return (
     <header className="app-header">
       <button className="brand" onClick={() => onNavigate('home')} aria-label="Retour à l'accueil">
-        <span className={animationsEnabled ? 'brand-icon pulse' : 'brand-icon'}>🧵</span>
+        <span className={animationsEnabled ? 'brand-icon pulse' : 'brand-icon'}>◈</span>
         <span>
-          <strong>La Légende d’Eko</strong>
-          <small>Laboratoire de cyber-archéologie</small>
+          <strong>EKO</strong>
+          <small>Archive cyber-archéologique</small>
         </span>
       </button>
 

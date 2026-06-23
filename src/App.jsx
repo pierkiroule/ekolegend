@@ -79,18 +79,53 @@ export default function App() {
         {view === 'home' ? (
           <>
             <section className="hero-panel">
-              <p className="eyebrow">MVP thérapeutique narratif</p>
-              <h1>Explorer l’influence numérique sans perdre le fil de soi.</h1>
-              <p>
-                Une expérience courte, mobile-first et rassurante pour traverser sept figures
-                d’Eko, collecter leurs sagesses et repartir avec une synthèse exportable.
-              </p>
+              <div className="archive-glow" aria-hidden="true" />
+              <p className="eyebrow glitch-label">Archive partiellement corrompue</p>
+              <h1 className="glitch-title" data-text="EKO">EKO</h1>
+              <p className="hero-subtitle">La légende de l’influenceur influencé</p>
+
+              <div className="narrative-copy">
+                <p>Personne ne sait exactement ce qui est arrivé à Éko.</p>
+                <p>Pour certains, il n'était qu'un influenceur parmi d'autres.</p>
+                <p>Pour d'autres, il fut le premier humain à traverser consciemment l'Ékran.</p>
+                <p>Le jour du BiG BUG, son direct fut suivi par des millions de personnes.</p>
+                <p>Puis le flux s'interrompit.</p>
+                <p>Plus aucun message. Plus aucune vidéo. Plus aucune trace. Ou presque.</p>
+                <p>Des siècles plus tard, les cyber-archéologues transnuméristes ont retrouvé des fragments dispersés de son histoire.</p>
+                <p>Mais les archives sont incomplètes. Contradictoires. Parfois corrompues.</p>
+                <p>Certaines sources affirment qu'Éko a disparu.</p>
+                <p>D'autres prétendent qu'il a découvert quelque chose que personne n'aurait dû voir.</p>
+                <p>Ta mission est simple.</p>
+                <p>Retrouver la vérité vraie. Ou du moins ce qu'il en reste.</p>
+                <p>Pour cela, tu devras explorer les fragments retrouvés et découvrir les anciennes sagesses qui auraient aidé Éko à traverser la crise du BiG BUG.</p>
+                <p>Chaque fragment restauré révélera une partie de la légende.</p>
+                <p>Chaque cyber-fossile découvert dévoilera une sagesse oubliée.</p>
+                <p>À la fin de ton enquête, tu pourras partager au monde ce que tu crois être arrivé à Éko.</p>
+                <p>Et peut-être comprendre pourquoi cette histoire continue encore aujourd'hui à nous concerner tous.</p>
+              </div>
+
+              <aside className="found-message" aria-label="Message retrouvé dans l’archive">
+                <p className="found-message-label">Message retrouvé</p>
+                <blockquote>
+                  <p>Si quelqu'un retrouve ceci...</p>
+                  <p>Je crois que quelque chose m'est arrivé.</p>
+                  <p>Au début je pensais contrôler mes écrans.</p>
+                  <p>Puis mes écrans ont commencé à me contrôler.</p>
+                  <p>Ensuite je ne savais plus vraiment qui imitait qui.</p>
+                  <p>Moi.</p>
+                  <p>Mon avatar.</p>
+                  <p>Ou mon IA.</p>
+                  <p>Si tu lis ceci...</p>
+                  <p>aide-moi à reconstruire mon histoire.</p>
+                </blockquote>
+              </aside>
+
               <div className="hero-actions">
                 <button className="primary-button" onClick={() => setView('quest')}>
-                  Commencer la fouille
+                  Ouvrir la première archive
                 </button>
                 <button className="secondary-button" onClick={() => setView('collection')}>
-                  Voir l’archive
+                  Consulter les fragments restaurés
                 </button>
               </div>
             </section>
@@ -151,7 +186,7 @@ export default function App() {
       </main>
 
       <footer>
-        Atelier de médiation douce • Cadre protecteur et contenant • Respirez, revenez à vous.
+        Archive Éko • Signal reconstruit • Fragments sous observation
       </footer>
     </div>
   )
