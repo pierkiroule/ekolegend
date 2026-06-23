@@ -9,11 +9,11 @@ export function Progress({ current, total }) {
           <strong>{current} / {total}</strong>
         </div>
         <div className="progress-copy">
-          <span>Cyber-fossiles découverts</span>
+          <span>Sagesses retrouvées</span>
           <strong>{current} / {total}</strong>
         </div>
         <div className="progress-copy">
-          <span>Archive restaurée</span>
+          <span>Légende recomposée</span>
           <strong>{value} %</strong>
         </div>
       </div>
