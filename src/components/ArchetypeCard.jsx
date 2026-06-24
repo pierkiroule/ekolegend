@@ -11,6 +11,11 @@ export function ArchetypeCard({ archetype, choice, isCollected, onChoose, onCont
       <h3>{archetype.name}</h3>
       <p className="fossil">{archetype.fossil}</p>
 
+      <section className="situation-box" aria-label={`Situation narrative : ${archetype.name}`}>
+        <p className="debate-kicker">La légende raconte</p>
+        <p>{archetype.situation}</p>
+      </section>
+
       <section className="debate-box" aria-label={`Énigme transnumériste : ${archetype.name}`}>
         <p className="debate-kicker">Énigme du collectif</p>
         <h4>{archetype.debate.prompt}</h4>
