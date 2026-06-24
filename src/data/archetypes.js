@@ -10,6 +10,11 @@ export const archetypes = [
     question: 'Quand peut-on être très regardé sans se sentir vraiment rencontré ?',
     wisdom: 'Je ne suis pas seulement ce que je montre.',
     resource: 'Nommer trois qualités qui existent même sans écran.',
+    debate: {
+      prompt: 'Un avatar est-il plutôt un masque, un miroir ou un terrain de jeu ?',
+      positions: ['Il protège et permet d’essayer des facettes de soi.', 'Il peut enfermer si l’on croit devoir toujours lui ressembler.'],
+      groupAction: 'Chaque personne choisit une position, puis donne un exemple où une image en ligne aide ou complique la relation.',
+    },
   },
   {
     id: 'fil-infini',
@@ -22,6 +27,11 @@ export const archetypes = [
     question: 'Quel signal du corps indique que la navigation devient trop longue ?',
     wisdom: 'Je peux couper le fil sans perdre le monde.',
     resource: 'Faire une pause de trente secondes, pieds au sol, regard au loin.',
+    debate: {
+      prompt: 'Qui doit décider du moment où l’on s’arrête : soi, le groupe, l’application ou une règle fixée avant ?',
+      positions: ['La liberté consiste à décider sur le moment.', 'Une limite choisie avant protège mieux quand l’attention est captée.'],
+      groupAction: 'Le groupe invente une règle de pause réaliste, puis discute ce qui la rend acceptable plutôt que punitive.',
+    },
   },
   {
     id: 'miroir-social',
@@ -34,6 +44,11 @@ export const archetypes = [
     question: 'Qu’est-ce qui reste vrai de soi quand personne ne valide ?',
     wisdom: 'Ma valeur précède les regards.',
     resource: 'Écrire une phrase de reconnaissance adressée à soi-même.',
+    debate: {
+      prompt: 'Les likes donnent-ils de la confiance ou rendent-ils dépendant du regard des autres ?',
+      positions: ['Ils peuvent encourager quand ils restent à leur juste place.', 'Ils peuvent prendre trop de place quand ils deviennent la mesure de soi.'],
+      groupAction: 'Comparer deux situations : un retour en ligne qui soutient, puis un retour qui fragilise.',
+    },
   },
   {
     id: 'spectre-comparaison',
@@ -46,6 +61,11 @@ export const archetypes = [
     question: 'Quelle comparaison donne envie de grandir, et laquelle rétrécit ?',
     wisdom: 'Le chemin des autres n’annule pas le mien.',
     resource: 'Lister une progression personnelle récente, même minuscule.',
+    debate: {
+      prompt: 'Se comparer aux autres peut-il parfois aider à grandir ?',
+      positions: ['Oui, si la comparaison inspire une prochaine étape possible.', 'Non, si elle efface le rythme et l’histoire de chacun.'],
+      groupAction: 'Transformer une comparaison douloureuse en phrase d’inspiration plus juste et plus précise.',
+    },
   },
   {
     id: 'oracle-algorithme',
@@ -58,6 +78,11 @@ export const archetypes = [
     question: 'Qui décide de ce que je vois, et comment puis-je reprendre la main ?',
     wisdom: 'Je peux interroger ce qui me guide.',
     resource: 'Changer volontairement de source, de rythme ou de sujet.',
+    debate: {
+      prompt: 'Quand un algorithme propose quelque chose, est-ce encore vraiment un choix ?',
+      positions: ['Oui, car on peut accepter, refuser ou chercher ailleurs.', 'Pas complètement, car le chemin proposé influence déjà notre envie.'],
+      groupAction: 'Choisir un contenu banal et imaginer trois chemins alternatifs pour reprendre la main sur la découverte.',
+    },
   },
   {
     id: 'corps-oublie',
@@ -70,6 +95,11 @@ export const archetypes = [
     question: 'Que demande le corps pendant que l’esprit reste connecté ?',
     wisdom: 'Mon corps est une boussole fiable.',
     resource: 'Boire de l’eau, étirer les épaules, respirer quatre fois lentement.',
+    debate: {
+      prompt: 'Le corps sait-il avant la tête quand les écrans prennent trop de place ?',
+      positions: ['Oui, la fatigue, les tensions ou l’agitation sont des signaux utiles.', 'Pas toujours, il faut parfois apprendre à reconnaître ces signaux.'],
+      groupAction: 'Créer une carte collective des signaux corporels qui disent : pause, besoin, mouvement ou repos.',
+    },
   },
   {
     id: 'gardien-seuil',
@@ -82,5 +112,10 @@ export const archetypes = [
     question: 'Quelle règle simple protège mon attention sans me punir ?',
     wisdom: 'Dire stop est une compétence de soin.',
     resource: 'Définir une heure de fermeture et préparer une activité de retour.',
+    debate: {
+      prompt: 'Dire stop à un écran, est-ce perdre quelque chose ou choisir autre chose ?',
+      positions: ['On peut avoir l’impression de manquer un moment important.', 'On gagne aussi du temps pour une présence différente.'],
+      groupAction: 'Imaginer un rituel de fermeture que le groupe trouverait suffisamment simple pour l’essayer une fois.',
+    },
   },
 ]

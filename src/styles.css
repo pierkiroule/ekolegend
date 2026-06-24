@@ -293,6 +293,81 @@ dd { color: #cbd5e1; line-height: 1.55; margin: 0.2rem 0 0; }
 blockquote { border-left: 3px solid #22d3ee; color: #e2e8f0; font-style: italic; margin: 1rem 0; padding-left: 0.9rem; }
 .wisdom { color: #67e8f9; font-weight: 800; }
 
+.section-intro {
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0.65rem 0 0;
+  max-width: 58rem;
+}
+
+.debate-box {
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.08), rgba(168, 85, 247, 0.08));
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.debate-kicker {
+  color: #67e8f9;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.55rem;
+  text-transform: uppercase;
+}
+
+.debate-box blockquote {
+  margin-top: 0;
+}
+
+.position-grid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.position-grid p {
+  background: rgba(15, 23, 42, 0.68);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 0.85rem;
+  color: #dbeafe;
+  line-height: 1.45;
+  margin: 0;
+  padding: 0.75rem;
+}
+
+.group-action {
+  color: #c4b5fd;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0.85rem 0 0;
+}
+
+.guide-notes {
+  background: rgba(2, 6, 23, 0.38);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 0.9rem;
+  color: #cbd5e1;
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+}
+
+.guide-notes summary {
+  color: #a7f3d0;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.guide-notes p {
+  line-height: 1.55;
+  margin: 0.65rem 0 0;
+}
+
 .collection-panel { border-radius: 1.5rem; padding: clamp(1rem, 4vw, 2rem); }
 .archive-list { display: grid; gap: 0.7rem; margin-top: 1.5rem; }
 .archive-list article {
@@ -341,5 +416,6 @@ footer {
   .header-actions { justify-content: flex-end; }
   .hero-actions button,
   .collection-actions button { width: 100%; }
-  .progress-metrics { grid-template-columns: 1fr; }
+  .progress-metrics,
+  .position-grid { grid-template-columns: 1fr; }
 }

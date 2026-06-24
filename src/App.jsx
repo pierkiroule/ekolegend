@@ -144,6 +144,7 @@ export default function App() {
             <div className="section-heading">
               <p className="eyebrow">Cyber-fossiles</p>
               <h2>Choisissez un fragment à restaurer</h2>
+              <p className="section-intro">Chaque fragment ouvre une question à discuter ensemble : il n’y a pas de bonne réponse unique, seulement des hypothèses à comparer.</p>
             </div>
             <div className="card-grid">
               {archetypes.map((archetype) => (

@@ -19,7 +19,22 @@ export function ArchetypeCard({ archetype, isCollected, onCollect }) {
         </div>
       </dl>
 
-      <blockquote>{archetype.question}</blockquote>
+      <section className="debate-box" aria-label={`Débat de groupe : ${archetype.name}`}>
+        <p className="debate-kicker">Débat de groupe</p>
+        <blockquote>{archetype.debate.prompt}</blockquote>
+        <div className="position-grid">
+          {archetype.debate.positions.map((position) => (
+            <p key={position}>{position}</p>
+          ))}
+        </div>
+        <p className="group-action">✦ {archetype.debate.groupAction}</p>
+      </section>
+
+      <details className="guide-notes">
+        <summary>Repère psychoéducatif</summary>
+        <p>{archetype.question}</p>
+        <p>{archetype.resource}</p>
+      </details>
 
       {isCollected ? (
         <p className="wisdom">✦ {archetype.wisdom}</p>
