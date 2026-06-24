@@ -321,21 +321,37 @@ blockquote { border-left: 3px solid #22d3ee; color: #e2e8f0; font-style: italic;
   margin-top: 0;
 }
 
-.position-grid {
+.choice-grid {
   display: grid;
   gap: 0.65rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.position-grid p {
+.choice-button {
   background: rgba(15, 23, 42, 0.68);
   border: 1px solid rgba(148, 163, 184, 0.14);
   border-radius: 0.85rem;
   color: #dbeafe;
+  display: grid;
+  gap: 0.35rem;
   line-height: 1.45;
-  margin: 0;
-  padding: 0.75rem;
+  padding: 0.85rem;
+  text-align: left;
+  text-transform: none;
 }
+
+.choice-button span {
+  color: #67e8f9;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.choice-button strong { color: #fff; }
+.choice-button small { color: #94a3b8; font-size: 0.82rem; line-height: 1.45; }
+.choice-button.selected { border-color: rgba(34, 211, 238, 0.62); box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.22); }
+.choice-button:disabled { cursor: default; opacity: 0.86; }
 
 .group-action {
   color: #c4b5fd;
@@ -366,6 +382,45 @@ blockquote { border-left: 3px solid #22d3ee; color: #e2e8f0; font-style: italic;
 .guide-notes p {
   line-height: 1.55;
   margin: 0.65rem 0 0;
+}
+
+
+.debate-box h4 {
+  color: #fff;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 0.7rem;
+}
+
+.debate-rule {
+  color: #94a3b8;
+  line-height: 1.55;
+  margin-bottom: 0.85rem;
+}
+
+.reveal-box,
+.quest-complete {
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.reveal-box p,
+.quest-complete p {
+  color: #cbd5e1;
+  line-height: 1.55;
+}
+
+.quest-complete h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.choice-summary {
+  color: #c4b5fd !important;
+  margin-top: 0.45rem;
 }
 
 .collection-panel { border-radius: 1.5rem; padding: clamp(1rem, 4vw, 2rem); }
@@ -417,5 +472,5 @@ footer {
   .hero-actions button,
   .collection-actions button { width: 100%; }
   .progress-metrics,
-  .position-grid { grid-template-columns: 1fr; }
+  .choice-grid { grid-template-columns: 1fr; }
 }

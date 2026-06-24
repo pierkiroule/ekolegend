@@ -6,12 +6,21 @@ import { Progress } from './components/Progress'
 import './styles.css'
 
 const STORAGE_KEY = 'ekolegend.mvp.collection'
+const CHOICES_STORAGE_KEY = 'ekolegend.mvp.choices'
 
 function readCollection() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []
   } catch {
     return []
+  }
+}
+
+function readChoices() {
+  try {
+    return JSON.parse(localStorage.getItem(CHOICES_STORAGE_KEY)) ?? {}
+  } catch {
+    return {}
   }
 }
 
@@ -28,6 +37,7 @@ function downloadFile(filename, content, type) {
 export default function App() {
   const [view, setView] = useState('home')
   const [collectedIds, setCollectedIds] = useState(readCollection)
+  const [choices, setChoices] = useState(readChoices)
   const [animationsEnabled, setAnimationsEnabled] = useState(true)
 
   const collected = useMemo(
@@ -35,33 +45,46 @@ export default function App() {
     [collectedIds],
   )
 
+  const activeArchetype = archetypes.find((archetype) => !collectedIds.includes(archetype.id))
+
   function persist(nextIds) {
     setCollectedIds(nextIds)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(nextIds))
   }
 
-  function collect(id) {
-    if (!collectedIds.includes(id)) {
-      persist([...collectedIds, id])
+  function persistChoices(nextChoices) {
+    setChoices(nextChoices)
+    localStorage.setItem(CHOICES_STORAGE_KEY, JSON.stringify(nextChoices))
+  }
+
+  function chooseMission(archetypeId, choice) {
+    persistChoices({ ...choices, [archetypeId]: choice })
+    if (!collectedIds.includes(archetypeId)) {
+      persist([...collectedIds, archetypeId])
     }
   }
 
   function reset() {
     persist([])
+    persistChoices({})
     setView('home')
   }
 
   function exportJson() {
     downloadFile(
       'archive-eko.json',
-      JSON.stringify({ exportedAt: new Date().toISOString(), collection: collected }, null, 2),
+      JSON.stringify({ exportedAt: new Date().toISOString(), collection: collected, choices }, null, 2),
       'application/json',
     )
   }
 
   function exportTxt() {
     const body = collected
-      .map((item) => `${item.name}\n${item.wisdom}\nRessource : ${item.resource}`)
+      .map((item) => {
+        const choice = choices[item.id]
+        const reveal = choice ? `\nChoix du groupe : ${choice.text}\nCe que cela révèle : ${choice.reveals}` : ''
+        return `${item.name}\n${item.wisdom}${reveal}\nRessource : ${item.resource}`
+      })
       .join('\n\n---\n\n')
     downloadFile('synthese-eko.txt', body || 'Aucun fragment restauré.', 'text/plain')
   }
@@ -143,19 +166,26 @@ export default function App() {
           <section className="grid-section">
             <div className="section-heading">
               <p className="eyebrow">Cyber-fossiles</p>
-              <h2>Choisissez un fragment à restaurer</h2>
-              <p className="section-intro">Chaque fragment ouvre une question à discuter ensemble : il n’y a pas de bonne réponse unique, seulement des hypothèses à comparer.</p>
+              <h2>Mission après mission, choisissez une piste</h2>
+              <p className="section-intro">Le groupe discute comme dans un QCM sans bonne réponse. Chaque choix restaure un fragment, puis révèle les archétypes croisés et ce qu’ils apportent d’utile.</p>
             </div>
-            <div className="card-grid">
-              {archetypes.map((archetype) => (
-                <ArchetypeCard
-                  archetype={archetype}
-                  isCollected={collectedIds.includes(archetype.id)}
-                  key={archetype.id}
-                  onCollect={collect}
-                />
-              ))}
-            </div>
+            {activeArchetype ? (
+              <ArchetypeCard
+                archetype={activeArchetype}
+                choice={choices[activeArchetype.id]}
+                isCollected={collectedIds.includes(activeArchetype.id)}
+                onChoose={chooseMission}
+              />
+            ) : (
+              <div className="quest-complete">
+                <p className="eyebrow">Traversée recomposée</p>
+                <h3>Les sept missions-débat sont restaurées.</h3>
+                <p>Consultez les fragments restaurés pour relire les choix du groupe et construire votre interprétation de la légende.</p>
+                <button className="primary-button" onClick={() => setView('collection')}>
+                  Voir la synthèse du groupe
+                </button>
+              </div>
+            )}
           </section>
         ) : null}
 
@@ -178,15 +208,27 @@ export default function App() {
               </button>
             </div>
             <div className="archive-list">
-              {archetypes.map((archetype) => (
-                <article key={archetype.id}>
-                  <span>{archetype.icon}</span>
-                  <div>
-                    <h3>{archetype.name}</h3>
-                    <p>{collectedIds.includes(archetype.id) ? archetype.wisdom : 'Fragment à restaurer.'}</p>
-                  </div>
-                </article>
-              ))}
+              {archetypes.map((archetype) => {
+                const choice = choices[archetype.id]
+
+                return (
+                  <article key={archetype.id}>
+                    <span>{archetype.icon}</span>
+                    <div>
+                      <h3>{archetype.name}</h3>
+                      {collectedIds.includes(archetype.id) ? (
+                        <>
+                          <p>{archetype.wisdom}</p>
+                          {choice && <p className="choice-summary">Choix du groupe : {choice.text}</p>}
+                          {choice && <p className="choice-summary">Ce que cela révèle : {choice.reveals}</p>}
+                        </>
+                      ) : (
+                        <p>Mission-débat à jouer.</p>
+                      )}
+                    </div>
+                  </article>
+                )
+              })}
             </div>
           </section>
         ) : null}

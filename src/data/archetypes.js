@@ -11,9 +11,11 @@ export const archetypes = [
     wisdom: 'Je ne suis pas seulement ce que je montre.',
     resource: 'Nommer trois qualités qui existent même sans écran.',
     debate: {
-      prompt: 'Un avatar est-il plutôt un masque, un miroir ou un terrain de jeu ?',
-      positions: ['Il protège et permet d’essayer des facettes de soi.', 'Il peut enfermer si l’on croit devoir toujours lui ressembler.'],
-      groupAction: 'Chaque personne choisit une position, puis donne un exemple où une image en ligne aide ou complique la relation.',
+      prompt: 'Éko doit-il montrer son avatar ou parler depuis lui-même ?',
+      choices: [
+        { id: 'avatar', label: 'Piste A', text: 'Garder l’avatar comme costume de scène.', reveals: 'Le groupe croise l’Avatar Performant : l’image peut soutenir la créativité quand elle reste un jeu choisi.' },
+        { id: 'voix', label: 'Piste B', text: 'Mettre l’avatar de côté pour retrouver sa voix.', reveals: 'Le groupe croise l’Avatar Performant : la valeur d’Éko ne dépend pas de l’image qui le représente.' },
+      ],
     },
   },
   {
@@ -28,9 +30,11 @@ export const archetypes = [
     wisdom: 'Je peux couper le fil sans perdre le monde.',
     resource: 'Faire une pause de trente secondes, pieds au sol, regard au loin.',
     debate: {
-      prompt: 'Qui doit décider du moment où l’on s’arrête : soi, le groupe, l’application ou une règle fixée avant ?',
-      positions: ['La liberté consiste à décider sur le moment.', 'Une limite choisie avant protège mieux quand l’attention est captée.'],
-      groupAction: 'Le groupe invente une règle de pause réaliste, puis discute ce qui la rend acceptable plutôt que punitive.',
+      prompt: 'Au milieu du flux, comment Éko sait-il qu’il est temps de faire pause ?',
+      choices: [
+        { id: 'signal', label: 'Piste A', text: 'Écouter un signal du corps.', reveals: 'Le groupe croise le Fil Infini : l’attention a besoin de signes simples pour ne pas se perdre.' },
+        { id: 'regle', label: 'Piste B', text: 'Fixer une limite avant de commencer.', reveals: 'Le groupe croise le Fil Infini : une limite préparée peut protéger la curiosité sans l’éteindre.' },
+      ],
     },
   },
   {
@@ -45,9 +49,11 @@ export const archetypes = [
     wisdom: 'Ma valeur précède les regards.',
     resource: 'Écrire une phrase de reconnaissance adressée à soi-même.',
     debate: {
-      prompt: 'Les likes donnent-ils de la confiance ou rendent-ils dépendant du regard des autres ?',
-      positions: ['Ils peuvent encourager quand ils restent à leur juste place.', 'Ils peuvent prendre trop de place quand ils deviennent la mesure de soi.'],
-      groupAction: 'Comparer deux situations : un retour en ligne qui soutient, puis un retour qui fragilise.',
+      prompt: 'Quand les réactions arrivent, que doit regarder Éko en premier ?',
+      choices: [
+        { id: 'retours', label: 'Piste A', text: 'Lire les retours qui encouragent vraiment.', reveals: 'Le groupe croise le Miroir Social : certains regards soutiennent quand ils ne décident pas de toute la valeur.' },
+        { id: 'valeur', label: 'Piste B', text: 'Nommer ce qui reste vrai sans likes.', reveals: 'Le groupe croise le Miroir Social : une part de soi existe avant les validations visibles.' },
+      ],
     },
   },
   {
@@ -62,9 +68,11 @@ export const archetypes = [
     wisdom: 'Le chemin des autres n’annule pas le mien.',
     resource: 'Lister une progression personnelle récente, même minuscule.',
     debate: {
-      prompt: 'Se comparer aux autres peut-il parfois aider à grandir ?',
-      positions: ['Oui, si la comparaison inspire une prochaine étape possible.', 'Non, si elle efface le rythme et l’histoire de chacun.'],
-      groupAction: 'Transformer une comparaison douloureuse en phrase d’inspiration plus juste et plus précise.',
+      prompt: 'Éko voit quelqu’un réussir mieux que lui : que peut-il faire de cette comparaison ?',
+      choices: [
+        { id: 'inspiration', label: 'Piste A', text: 'Chercher ce qui peut l’inspirer.', reveals: 'Le groupe croise le Spectre de Comparaison : comparer peut ouvrir une étape si cela donne de l’élan.' },
+        { id: 'rythme', label: 'Piste B', text: 'Revenir à son propre rythme.', reveals: 'Le groupe croise le Spectre de Comparaison : chaque trajet garde sa valeur même lorsqu’il avance autrement.' },
+      ],
     },
   },
   {
@@ -79,9 +87,11 @@ export const archetypes = [
     wisdom: 'Je peux interroger ce qui me guide.',
     resource: 'Changer volontairement de source, de rythme ou de sujet.',
     debate: {
-      prompt: 'Quand un algorithme propose quelque chose, est-ce encore vraiment un choix ?',
-      positions: ['Oui, car on peut accepter, refuser ou chercher ailleurs.', 'Pas complètement, car le chemin proposé influence déjà notre envie.'],
-      groupAction: 'Choisir un contenu banal et imaginer trois chemins alternatifs pour reprendre la main sur la découverte.',
+      prompt: 'L’algorithme propose une route à Éko : comment reprend-il la main ?',
+      choices: [
+        { id: 'questionner', label: 'Piste A', text: 'Questionner pourquoi ce contenu apparaît.', reveals: 'Le groupe croise l’Oracle Algorithme : comprendre une influence aide à choisir plus librement.' },
+        { id: 'ailleurs', label: 'Piste B', text: 'Changer volontairement de source.', reveals: 'Le groupe croise l’Oracle Algorithme : ouvrir une autre route redonne de l’espace à la découverte.' },
+      ],
     },
   },
   {
@@ -96,9 +106,11 @@ export const archetypes = [
     wisdom: 'Mon corps est une boussole fiable.',
     resource: 'Boire de l’eau, étirer les épaules, respirer quatre fois lentement.',
     debate: {
-      prompt: 'Le corps sait-il avant la tête quand les écrans prennent trop de place ?',
-      positions: ['Oui, la fatigue, les tensions ou l’agitation sont des signaux utiles.', 'Pas toujours, il faut parfois apprendre à reconnaître ces signaux.'],
-      groupAction: 'Créer une carte collective des signaux corporels qui disent : pause, besoin, mouvement ou repos.',
+      prompt: 'Le direct dure longtemps : quel repère peut ramener Éko dans le présent ?',
+      choices: [
+        { id: 'besoin', label: 'Piste A', text: 'Nommer un besoin du corps.', reveals: 'Le groupe croise le Corps Oublié : fatigue, faim ou tension peuvent devenir des boussoles.' },
+        { id: 'geste', label: 'Piste B', text: 'Faire un petit geste d’ancrage.', reveals: 'Le groupe croise le Corps Oublié : un geste simple peut rouvrir le lien avec le présent.' },
+      ],
     },
   },
   {
@@ -113,9 +125,11 @@ export const archetypes = [
     wisdom: 'Dire stop est une compétence de soin.',
     resource: 'Définir une heure de fermeture et préparer une activité de retour.',
     debate: {
-      prompt: 'Dire stop à un écran, est-ce perdre quelque chose ou choisir autre chose ?',
-      positions: ['On peut avoir l’impression de manquer un moment important.', 'On gagne aussi du temps pour une présence différente.'],
-      groupAction: 'Imaginer un rituel de fermeture que le groupe trouverait suffisamment simple pour l’essayer une fois.',
+      prompt: 'À la fin de la traversée, comment Éko referme-t-il l’écran ?',
+      choices: [
+        { id: 'rituel', label: 'Piste A', text: 'Inventer un rituel de fermeture.', reveals: 'Le groupe croise le Gardien du Seuil : finir consciemment aide à passer d’un monde à l’autre.' },
+        { id: 'lien', label: 'Piste B', text: 'Prévoir un lien hors écran.', reveals: 'Le groupe croise le Gardien du Seuil : quitter l’écran devient plus simple quand autre chose attend.' },
+      ],
     },
   },
 ]
