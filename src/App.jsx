@@ -130,6 +130,27 @@ export default function App() {
                 <p>Mais pour comprendre ce qui aide un humain à rester vivant, relié et créatif au milieu des écrans, des avatars et des IA.</p>
               </div>
 
+              <section className="video-fossil" aria-label="Fossile vidéo de la légende d’Éko">
+                <div>
+                  <p className="found-message-label">Fossile vidéo · 2026</p>
+                  <h2>Le slam des colporteurs d’Éko</h2>
+                  <p>
+                    Cet artefact aurait été réalisé en 2026 par un mystérieux collectif de
+                    colporteurs de la légende d’Éko. Ils racontent avoir composé ce slam en
+                    résonance avec un témoignage qu’Éko leur aurait confié, au moment où il
+                    cherchait comment traverser son propre BiG BUG.
+                  </p>
+                </div>
+                <div className="video-frame">
+                  <iframe
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    src="https://www.youtube-nocookie.com/embed/xJmbsrkC5_A"
+                    title="Fossile vidéo de la légende d’Éko"
+                  />
+                </div>
+              </section>
+
               <aside className="found-message" aria-label="Message retrouvé dans l’archive">
                 <p className="found-message-label">Message retrouvé</p>
                 <blockquote>
