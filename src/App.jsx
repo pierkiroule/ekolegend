@@ -38,6 +38,7 @@ export default function App() {
   const [view, setView] = useState('home')
   const [collectedIds, setCollectedIds] = useState(readCollection)
   const [choices, setChoices] = useState(readChoices)
+  const [revealedMissionId, setRevealedMissionId] = useState(null)
   const [animationsEnabled, setAnimationsEnabled] = useState(true)
 
   const collected = useMemo(
@@ -45,7 +46,10 @@ export default function App() {
     [collectedIds],
   )
 
-  const activeArchetype = archetypes.find((archetype) => !collectedIds.includes(archetype.id))
+  const score = Object.values(choices).filter((choice) => choice.isCorrect).length
+  const revealedArchetype = archetypes.find((archetype) => archetype.id === revealedMissionId)
+  const nextArchetype = archetypes.find((archetype) => !collectedIds.includes(archetype.id))
+  const activeArchetype = revealedArchetype ?? nextArchetype
 
   function persist(nextIds) {
     setCollectedIds(nextIds)
@@ -59,21 +63,27 @@ export default function App() {
 
   function chooseMission(archetypeId, choice) {
     persistChoices({ ...choices, [archetypeId]: choice })
+    setRevealedMissionId(archetypeId)
     if (!collectedIds.includes(archetypeId)) {
       persist([...collectedIds, archetypeId])
     }
   }
 
+  function continueMission() {
+    setRevealedMissionId(null)
+  }
+
   function reset() {
     persist([])
     persistChoices({})
+    setRevealedMissionId(null)
     setView('home')
   }
 
   function exportJson() {
     downloadFile(
       'archive-eko.json',
-      JSON.stringify({ exportedAt: new Date().toISOString(), collection: collected, choices }, null, 2),
+      JSON.stringify({ exportedAt: new Date().toISOString(), collection: collected, choices, score }, null, 2),
       'application/json',
     )
   }
@@ -82,10 +92,23 @@ export default function App() {
     const body = collected
       .map((item) => {
         const choice = choices[item.id]
-        const reveal = choice ? `\nChoix du groupe : ${choice.text}\nCe que cela révèle : ${choice.reveals}` : ''
-        return `${item.name}\n${item.wisdom}${reveal}\nRessource : ${item.resource}`
+        const correctChoice = item.debate.choices.find((option) => option.isCorrect)
+        const reveal = choice
+          ? `
+Choix du groupe : ${choice.text}
+${choice.isCorrect ? 'Point gagné' : `Bonne réponse révélée : ${correctChoice.text}`}
+Besoin profond : ${item.deepNeed}
+Sagesse : ${item.transnumeristWisdom}`
+          : ''
+        return `${item.name}
+${item.wisdom}${reveal}
+Ressource : ${item.resource}`
       })
-      .join('\n\n---\n\n')
+      .join('
+
+---
+
+')
     downloadFile('synthese-eko.txt', body || 'Aucun fragment restauré.', 'text/plain')
   }
 
@@ -187,8 +210,12 @@ export default function App() {
           <section className="grid-section">
             <div className="section-heading">
               <p className="eyebrow">Cyber-fossiles</p>
-              <h2>Mission après mission, choisissez une piste</h2>
-              <p className="section-intro">Le groupe discute comme dans un QCM sans bonne réponse. Chaque choix restaure un fragment, puis révèle les archétypes croisés et ce qu’ils apportent d’utile.</p>
+              <h2>Énigme après énigme, traversez le BiG BUG</h2>
+              <p className="section-intro">Le groupe débat comme dans un quiz narratif : une seule réponse marque le point, puis la bonne réponse est révélée et la suite du conte psychoéducatif apparaît.</p>
+              <div className="score-card" aria-label="Score du collectif">
+                <span>Score du collectif</span>
+                <strong>{score} / {archetypes.length}</strong>
+              </div>
             </div>
             {activeArchetype ? (
               <ArchetypeCard
@@ -196,12 +223,13 @@ export default function App() {
                 choice={choices[activeArchetype.id]}
                 isCollected={collectedIds.includes(activeArchetype.id)}
                 onChoose={chooseMission}
+                onContinue={continueMission}
               />
             ) : (
               <div className="quest-complete">
                 <p className="eyebrow">Traversée recomposée</p>
-                <h3>Les sept missions-débat sont restaurées.</h3>
-                <p>Consultez les fragments restaurés pour relire les choix du groupe et construire votre interprétation de la légende.</p>
+                <h3>Les sept énigmes sont traversées.</h3>
+                <p>Score du collectif : {score} / {archetypes.length}. Consultez la synthèse pour relire les besoins profonds, les sagesses d’Éko et les choix du groupe.</p>
                 <button className="primary-button" onClick={() => setView('collection')}>
                   Voir la synthèse du groupe
                 </button>
@@ -241,7 +269,9 @@ export default function App() {
                         <>
                           <p>{archetype.wisdom}</p>
                           {choice && <p className="choice-summary">Choix du groupe : {choice.text}</p>}
-                          {choice && <p className="choice-summary">Ce que cela révèle : {choice.reveals}</p>}
+                          {choice && <p className="choice-summary">{choice.isCorrect ? 'Point gagné' : 'Bonne réponse révélée'} : {archetype.debate.choices.find((option) => option.isCorrect)?.text}</p>}
+                          <p className="choice-summary">Besoin profond : {archetype.deepNeed}</p>
+                          <p className="choice-summary">Sagesse : {archetype.transnumeristWisdom}</p>
                         </>
                       ) : (
                         <p>Mission-débat à jouer.</p>
