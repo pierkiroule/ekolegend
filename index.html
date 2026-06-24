@@ -1,16 +1,70 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="La légende d'Eko, MVP React Vite de médiation narrative autour de l'identité numérique."
-    />
-    <title>La légende d’Eko — MVP React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Eko et le Big Bug, mini-application de médiation psychoéducative de groupe autour de l'IA, du succès numérique et des ressources." />
+  <title>Eko et le Big Bug</title>
+  <style>
+    :root{
+      color-scheme: dark;
+      --bg:#091018; --panel:#111b27; --panel-2:#152232; --soft:#203248;
+      --text:#eff7ff; --muted:#a9bdd2; --cyan:#72e7ff; --violet:#b99cff;
+      --mint:#9cf7d4; --line:rgba(255,255,255,.11); --glow:rgba(114,231,255,.22);
+      --shadow:0 22px 60px rgba(0,0,0,.35); --radius:24px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 0%,rgba(114,231,255,.16),transparent 28%),radial-gradient(circle at 85% 18%,rgba(185,156,255,.14),transparent 30%),linear-gradient(160deg,#071019 0%,#101827 58%,#0b111b 100%);color:var(--text);line-height:1.5}
+    button,input,textarea{font:inherit} button{cursor:pointer;border:0}
+    .app{width:min(960px,100%);margin:0 auto;padding:18px 14px 36px}
+    .shell{background:rgba(17,27,39,.82);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(14px)}
+    header{padding:18px 18px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;color:#081018;font-weight:900;box-shadow:0 0 24px var(--glow)}
+    h1,h2,h3,p{margin-top:0} h1{font-size:clamp(1.35rem,5vw,2.25rem);margin:0}.subtitle{color:var(--muted);font-size:.95rem}.screen{display:none;padding:18px}.screen.active{display:block;animation:fade .28s ease}.card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+    .notification{min-height:60vh;display:grid;place-items:center}.pulse{width:76px;height:76px;border-radius:28px;background:rgba(114,231,255,.12);display:grid;place-items:center;font-size:2rem;margin:0 auto 18px;border:1px solid rgba(114,231,255,.35);box-shadow:0 0 32px var(--glow)}
+    .primary{width:100%;margin-top:14px;padding:14px 18px;border-radius:18px;background:linear-gradient(135deg,var(--cyan),var(--mint));color:#071018;font-weight:800;box-shadow:0 12px 30px rgba(114,231,255,.18)}.secondary{padding:11px 14px;border-radius:16px;background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--line)}
+    .profile{display:grid;gap:16px}.avatar{width:92px;height:92px;border-radius:31px;background:linear-gradient(145deg,#79e8ff,#b99cff 58%,#9cf7d4);display:grid;place-items:center;font-size:2.8rem;box-shadow:0 0 36px var(--glow)}.profile-head{display:flex;gap:16px;align-items:center}.handle{color:var(--cyan);font-weight:700}.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:7px 10px;border-radius:999px;background:rgba(114,231,255,.09);border:1px solid rgba(114,231,255,.2);color:#c9f7ff;font-size:.9rem}.video{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#05080d}.video iframe{position:absolute;inset:0;width:100%;height:100%}
+    .chat{display:flex;flex-direction:column;gap:10px}.msg{max-width:86%;padding:11px 13px;border-radius:18px;background:var(--panel-2);border:1px solid var(--line)}.msg.eko{border-bottom-left-radius:6px}.question{margin-top:14px;background:rgba(185,156,255,.08);border-color:rgba(185,156,255,.25)}.choices{display:grid;gap:10px;margin-top:14px}.choice{text-align:left;padding:13px;border-radius:18px;background:rgba(255,255,255,.055);color:var(--text);border:1px solid var(--line)}.choice:hover,.choice:focus{outline:2px solid rgba(114,231,255,.45);background:rgba(114,231,255,.09)}.insight{margin-top:14px;border-left:3px solid var(--cyan);padding:13px;background:rgba(114,231,255,.07);border-radius:16px}.progress{color:var(--muted);font-size:.92rem;margin-bottom:12px}.grid{display:grid;gap:12px}.result-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.archetype-card{padding:14px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid var(--line)}.mirror-options{display:flex;flex-wrap:wrap;gap:10px}.mirror{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line)}.mirror.selected{background:linear-gradient(135deg,rgba(114,231,255,.24),rgba(185,156,255,.22));box-shadow:0 0 26px var(--glow);border-color:rgba(114,231,255,.55)}
+    details{margin-top:16px}summary{cursor:pointer;font-weight:800;color:#d9f8ff}.safe{color:#d7e6f3;background:rgba(156,247,212,.07);border:1px solid rgba(156,247,212,.22);border-radius:18px;padding:12px}textarea{width:100%;min-height:92px;border-radius:18px;border:1px solid var(--line);background:#0b1420;color:var(--text);padding:12px;resize:vertical}.trace{white-space:pre-wrap;background:#07101a;border:1px solid var(--line);border-radius:18px;padding:14px;color:#dcecff}.footer-note{color:var(--muted);font-size:.9rem;margin-top:12px}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media (min-width:760px){.screen{padding:28px}.profile{grid-template-columns:1fr 1fr}.profile .wide{grid-column:1/-1}.primary{width:auto}.choices{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <main class="app"><section class="shell" aria-live="polite">
+    <header><div class="brand"><div class="logo">E</div><div><h1>Eko et le Big Bug</h1><div class="subtitle">Médiation de groupe • 20 minutes maximum</div></div></div></header>
+
+    <section id="notification" class="screen active notification"><div class="card" style="max-width:560px;text-align:center"><div class="pulse">🎧</div><p class="handle">@EkoOfficial souhaite se connecter à votre fil.</p><h2>HELP.</h2><p class="subtitle">Une invitation à réfléchir ensemble, sans urgence et sans obligation de tout raconter.</p><button class="primary" data-go="profile">Voir le profil d’Eko</button></div></section>
+
+    <section id="profile" class="screen"><div class="profile">
+      <div class="card"><div class="profile-head"><div class="avatar">🎛️</div><div><h2>Eko</h2><div class="handle">@EkoOfficial</div><strong>DJ • Créateur • Influenceur</strong><p class="subtitle">17 ans</p></div></div><div class="tags"><span class="tag">musique</span><span class="tag">IA créative</span><span class="tag">live</span><span class="tag">communauté</span></div></div>
+      <div class="card"><p>Eko crée des sons, des images et des lives avec l’aide d’outils numériques et d’IA. Beaucoup le voient comme quelqu’un qui réussit.</p><p>Hier soir, pendant un live très attendu, tout a coupé. Écran noir. Plus de son. Plus de commentaires.</p><p>Depuis ce bug technique, Eko se pose une question étrange : <strong>Quand tout s’arrête, qu’est-ce qui compte vraiment ?</strong></p></div>
+      <div class="card wide"><h3>Vidéo de profil</h3><div class="video"><iframe src="https://www.youtube.com/embed/xJmbsrkC5_A" title="Vidéo de profil d’Eko" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><button class="primary" data-start>Accepter la connexion</button></div>
+    </div></section>
+
+    <section id="chat" class="screen"><div class="progress" id="progress"></div><div class="chat card" id="chatBox"></div></section>
+
+    <section id="final" class="screen"><div class="grid">
+      <div class="card"><h2>Que cherche Eko, au fond, vraiment ?</h2><div class="grid result-grid" id="results"></div><p class="footer-note">Le Big Bug n’a peut-être pas seulement interrompu le live d’Eko.<br>Il a ouvert une question : quand les écrans, les IA et les performances s’arrêtent, qu’est-ce qui reste important ?</p></div>
+      <div class="card"><h2>Et vous ?</h2><p>Parmi les compagnons d’Eko, lequel résonne le plus avec votre vie numérique aujourd’hui ?</p><div class="mirror-options" id="mirror"></div><p><strong>Et moi, dans ma vie numérique, quel compagnon m’aide à ne pas me perdre ?</strong></p></div>
+      <div class="card"><details><summary>Guide de questions pour animer l’échange</summary><ul><li>Qu’est-ce qui vous a accroché dans le profil d’Eko ?</li><li>Que s’est-il passé pour lui au moment du bug ?</li><li>Que cherche Eko, au fond, vraiment ?</li><li>Pourquoi l’IA peut-elle parfois sembler très attirante ?</li><li>Quand l’IA aide, qu’est-ce qu’elle aide vraiment ?</li><li>Quand l’IA n’aide plus, quels signaux peuvent nous alerter ?</li><li>Quel archétype d’Eko résonne le plus avec votre vie numérique ?</li><li>Quel compagnon pourrait aider à ne pas se perdre ?</li><li>Qu’est-ce qui peut rester humain, même avec l’IA ?</li><li>Quelle sagesse courte le groupe voudrait transmettre à Eko ?</li></ul><p class="safe">En groupe de soin, on ne cherche pas à faire raconter des choses trop intimes. On parle d’abord d’Eko. Chacun peut participer, passer son tour, ou répondre de façon générale.</p></details></div>
+      <div class="card"><h2>Trace du groupe</h2><label for="wisdom">Phrase de sagesse du groupe pour Eko</label><textarea id="wisdom" placeholder="Ex. Garde un espace où créer reste un plaisir."></textarea><button class="primary" id="makeTrace">Créer la trace du groupe</button><div id="trace" class="trace" hidden></div><button class="secondary" id="copyTrace" hidden>Copier la trace</button></div>
+    </div></section>
+  </section></main>
+<script>
+const scenes=[
+{title:'SCÈNE 1 — Le bug du live',messages:['Salut. Merci d’avoir accepté.','Hier soir, j’étais en live.','Tout marchait.','Puis d’un coup : écran noir.','Plus de son. Plus d’image. Plus de commentaires.','Pendant ce silence, j’ai ressenti un truc bizarre.'],question:'À votre avis, qu’est-ce qu’Eko a surtout ressenti ?',choices:[['Peur de disparaître','reconnaissance','⭐ Le Phare'],['Soulagement que tout s’arrête','respiration','🌬️ Le Souffle'],['Colère de perdre le contrôle','repères','🧭 Le Pilote'],['Curiosité','exploration','🚀 L’Explorateur']]},
+{title:'SCÈNE 2 — Le succès',messages:['Tout le monde croit que ma vie est incroyable.','Des vues.','Des sons.','Des IA qui m’aident à créer plus vite.','Mais parfois je ne sais plus si je crée pour moi ou pour rester visible.'],question:'Qu’est-ce qu’Eko cherche peut-être derrière le succès ?',choices:[['Être vraiment reconnu','reconnaissance authentique','⭐ Le Phare'],['Être aimé sans performer','lien','🤝 Le Compagnon'],['Trouver ce qui compte pour lui','sens','🪞 Le Miroir'],['Retrouver le plaisir de créer','création libre','🎨 Le Créateur']]},
+{title:'SCÈNE 3 — L’IA',messages:['Je parle beaucoup avec les IA.','Elles répondent vite.','Elles donnent des idées.','Parfois, j’ai l’impression qu’elles m’écoutent mieux que les gens.'],question:'Pourquoi l’IA peut sembler si attirante pour Eko ?',choices:[['Elle est toujours disponible','présence','🤝 Le Compagnon'],['Elle ne juge pas','sécurité','🛡️ Le Gardien'],['Elle aide à mettre des mots','compréhension','🪞 Le Miroir'],['Elle donne des idées','inspiration','🎨 Le Créateur']]},
+{title:'SCÈNE 4 — Le souvenir',messages:['Pendant le bug, je me suis souvenu de mes premiers sons.','À l’époque, je ne pensais pas aux likes.','Je voulais juste faire vibrer quelque chose.'],question:'Quelle sagesse pourrait aider Eko ?',choices:[['Revenir à ce qui le fait vibrer','élan vivant','🎧 Le Battement'],['Créer sans toujours publier','intimité','🌙 Le Refuge'],['Demander de l’aide à des humains','lien réel','🤝 Le Compagnon'],['Faire une pause pour choisir','respiration','🌬️ Le Souffle']]},
+{title:'SCÈNE 5 — Traverser le Big Bug',messages:['Je crois que le bug n’a pas seulement coupé mon live.','Il a coupé ma course.','Et dans le silence, des questions sont apparues.'],question:'Pour traverser le Big Bug, Eko a peut-être besoin de…',choices:[['Se rappeler qu’il vaut plus que ses vues','valeur personnelle','⭐ Le Phare'],['Garder des liens hors écran','appartenance','🤝 Le Compagnon'],['Utiliser l’IA comme outil, pas comme boussole','repères','🧭 Le Pilote'],['Continuer à créer à sa façon','liberté créative','🎨 Le Créateur']]}
+];
+let current=0, picks=[], mirrorPick='';
+const $=s=>document.querySelector(s);function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active');scrollTo(0,0)}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));$('[data-start]').onclick=()=>{show('chat');renderScene()};
+function renderScene(){const scene=scenes[current],box=$('#chatBox');$('#progress').textContent=`${scene.title} • ${current+1}/${scenes.length}`;box.innerHTML='';scene.messages.forEach(m=>box.insertAdjacentHTML('beforeend',`<div class="msg eko">${m}</div>`));box.insertAdjacentHTML('beforeend',`<div class="msg question"><strong>${scene.question}</strong><br><span class="subtitle">Que cherche Eko, au fond, vraiment ?</span></div><div class="choices"></div>`);const choices=box.querySelector('.choices');scene.choices.forEach(c=>{const b=document.createElement('button');b.className='choice';b.innerHTML=`${c[0]}<br><span class="subtitle">Hypothèse du groupe : peut-être un besoin de ${c[1]}.</span>`;b.onclick=()=>choose(c);choices.appendChild(b)})}
+function choose(c){picks.push({label:c[0],need:c[1],arch:c[2]});const box=$('#chatBox');box.querySelector('.choices').remove();box.insertAdjacentHTML('beforeend',`<div class="insight"><strong>Hypothèse du groupe</strong><br>Peut-être qu’Eko cherche, au fond, ${c[1]}.<br><strong>Archétype possible :</strong> ${c[2]}<br><em>Que cherche Eko, au fond, vraiment ?</em></div>`);const next=document.createElement('button');next.className='primary';next.textContent=current<scenes.length-1?'Continuer le chat':'Voir la synthèse';next.onclick=()=>{current++;current<scenes.length?renderScene():renderFinal()};box.appendChild(next)}
+function renderFinal(){show('final');$('#results').innerHTML=picks.map(p=>`<div class="archetype-card"><h3>${p.arch}</h3><p><strong>Besoin associé :</strong> ${p.need}</p><p>Peut-être qu’Eko cherche, au fond, ${p.need}.</p></div>`).join('');const seen=[...new Map(picks.map(p=>[p.arch,p])).values()];$('#mirror').innerHTML='';seen.forEach(p=>{const b=document.createElement('button');b.className='mirror';b.textContent=p.arch;b.onclick=()=>{mirrorPick=p.arch;document.querySelectorAll('.mirror').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')};$('#mirror').appendChild(b)})}
+$('#makeTrace').onclick=()=>{const wisdom=$('#wisdom').value.trim()||'Le groupe garde une phrase simple à compléter ensemble.';const text=`Trace du groupe — Eko et le Big Bug\n\nHypothèses choisies :\n${picks.map((p,i)=>`${i+1}. ${p.arch} — Peut-être qu’Eko cherche, au fond, ${p.need}.`).join('\n')}\n\nArchétype qui résonne le plus : ${mirrorPick||'non sélectionné'}\n\nPhrase de sagesse du groupe pour Eko :\n${wisdom}`;$('#trace').textContent=text;$('#trace').hidden=false;$('#copyTrace').hidden=false};
+$('#copyTrace').onclick=async()=>{await navigator.clipboard.writeText($('#trace').textContent);$('#copyTrace').textContent='Trace copiée'};
+</script>
+</body>
 </html>
