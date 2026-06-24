@@ -10,6 +10,18 @@ export const archetypes = [
     question: 'Quand peut-on être très regardé sans se sentir vraiment rencontré ?',
     wisdom: 'Je ne suis pas seulement ce que je montre.',
     resource: 'Nommer trois qualités qui existent même sans écran.',
+    situation: 'La légende raconte qu’avant le BiG BUG, Éko préparait un direct mondial depuis sa chambre-studio. Son avatar DJ apparaissait sur les écrans avec un casque de lumière, plus calme, plus beau, plus sûr de lui que l’humain derrière la console. Au moment de lancer le morceau, Éko remarque que le public acclame surtout l’avatar. Un doute discret s’installe : est-ce encore lui que l’on écoute ?',
+    deepNeed: 'être reconnu sans être réduit à son image.',
+    transnumeristWisdom: 'l’avatar devient un costume choisi, pas une prison.',
+    storyReveal: 'Éko comprend que son avatar peut amplifier sa créativité, mais qu’il doit garder un lieu intérieur où il n’a rien à prouver.',
+    debate: {
+      prompt: 'Énigme : quand l’avatar d’Éko brille plus fort que lui, quelle phrase le ramène du consu-numériste vers le transnumériste ?',
+      choices: [
+        { id: 'performance', label: 'A', text: 'Je dois devenir exactement ce que mon avatar montre.', reveals: 'Cette piste enferme Éko dans la performance : l’image devient plus importante que le vivant.', isCorrect: false },
+        { id: 'costume', label: 'B', text: 'Mon avatar est un costume de scène, pas toute mon identité.', reveals: 'Éko croise l’Avatar Performant : il peut jouer avec son image sans lui donner toute sa valeur.', isCorrect: true },
+        { id: 'disparaitre', label: 'C', text: 'Je dois disparaître des écrans pour être vraiment moi.', reveals: 'Cette piste protège un temps, mais elle oublie que les écrans peuvent aussi devenir des espaces créatifs.', isCorrect: false },
+      ],
+    },
   },
   {
     id: 'fil-infini',
@@ -22,6 +34,18 @@ export const archetypes = [
     question: 'Quel signal du corps indique que la navigation devient trop longue ?',
     wisdom: 'Je peux couper le fil sans perdre le monde.',
     resource: 'Faire une pause de trente secondes, pieds au sol, regard au loin.',
+    situation: 'La légende raconte qu’après le direct interrompu, Éko cherche des indices dans les archives du réseau. Une vidéo mène à un commentaire, le commentaire à un remix, le remix à un souvenir. Les minutes deviennent des heures. La bobine lumineuse tourne sans fin, et Éko sent qu’il ne sait plus très bien s’il explore le fil ou si le fil l’emporte.',
+    deepNeed: 'retrouver le pouvoir de s’arrêter sans peur de manquer.',
+    transnumeristWisdom: 'la pause protège la curiosité au lieu de l’éteindre.',
+    storyReveal: 'Le flux tire Éko vers la consommation sans fin. Il découvre que couper le fil peut être un geste d’explorateur, pas un échec.',
+    debate: {
+      prompt: 'Énigme : le fil de l’Ékran ne finit jamais. Quel geste donne à Éko un vrai pouvoir sur le flux ?',
+      choices: [
+        { id: 'continuer', label: 'A', text: 'Continuer jusqu’à ce que le flux devienne ennuyeux.', reveals: 'Le flux est conçu pour se renouveler : attendre qu’il s’arrête tout seul rend Éko dépendant du rythme de l’Ékran.', isCorrect: false },
+        { id: 'pause', label: 'B', text: 'Choisir une pause avant d’être complètement aspiré.', reveals: 'Éko croise le Fil Infini : choisir une pause rend l’attention à nouveau disponible.', isCorrect: true },
+        { id: 'multitache', label: 'C', text: 'Ouvrir plusieurs fils pour aller plus vite.', reveals: 'Multiplier les fils donne une impression de maîtrise, mais disperse encore plus l’attention.', isCorrect: false },
+      ],
+    },
   },
   {
     id: 'miroir-social',
@@ -34,6 +58,18 @@ export const archetypes = [
     question: 'Qu’est-ce qui reste vrai de soi quand personne ne valide ?',
     wisdom: 'Ma valeur précède les regards.',
     resource: 'Écrire une phrase de reconnaissance adressée à soi-même.',
+    situation: 'La légende raconte qu’un matin, Éko retrouve une ancienne publication devenue virale pendant la nuit. Des milliers de likes brillent comme de petites étoiles sur la glace numérique. Puis une autre publication reçoit presque rien. Dans le silence du miroir social, Éko sent son humeur monter et descendre avec les chiffres.',
+    deepNeed: 'se sentir valable même quand le miroir social est silencieux.',
+    transnumeristWisdom: 'les retours peuvent encourager, mais ne doivent pas devenir un verdict.',
+    storyReveal: 'Éko apprend à écouter les retours sans les transformer en tribunal. Le miroir devient un outil, pas un maître.',
+    debate: {
+      prompt: 'Énigme : les likes montent puis disparaissent. Où Éko doit-il chercher sa boussole ?',
+      choices: [
+        { id: 'likes', label: 'A', text: 'Dans le nombre exact de réactions.', reveals: 'Compter peut informer, mais ne suffit pas à dire la valeur d’une personne ou d’une création.', isCorrect: false },
+        { id: 'comparaison', label: 'B', text: 'Dans le score des autres créateurs.', reveals: 'La comparaison transforme vite le miroir social en piège.', isCorrect: false },
+        { id: 'valeur', label: 'C', text: 'Dans ce qui reste vrai de lui, même sans validation.', reveals: 'Éko croise le Miroir Social : sa valeur précède les regards.', isCorrect: true },
+      ],
+    },
   },
   {
     id: 'spectre-comparaison',
@@ -46,6 +82,18 @@ export const archetypes = [
     question: 'Quelle comparaison donne envie de grandir, et laquelle rétrécit ?',
     wisdom: 'Le chemin des autres n’annule pas le mien.',
     resource: 'Lister une progression personnelle récente, même minuscule.',
+    situation: 'La légende raconte qu’Éko tombe sur le profil d’un autre créateur : mêmes platines, mêmes lumières, mais plus d’abonnés, plus de commentaires, plus de dates annoncées. Le Spectre de Comparaison s’assoit près de lui et lui murmure que son propre chemin est trop lent. Éko doit décider quoi faire de cette apparition.',
+    deepNeed: 'sentir que son propre rythme mérite d’exister.',
+    transnumeristWisdom: 'l’inspiration devient utile quand elle indique une prochaine étape possible.',
+    storyReveal: 'Éko voit des vies parfaites défiler. Il découvre que le chemin des autres peut éclairer le sien seulement s’il ne s’en sert pas contre lui-même.',
+    debate: {
+      prompt: 'Énigme : le Spectre montre à Éko quelqu’un qui réussit mieux que lui. Quelle réponse transforme la comparaison en ressource ?',
+      choices: [
+        { id: 'attaque', label: 'A', text: 'Me juger plus fort pour avancer plus vite.', reveals: 'Le jugement fatigue et rétrécit : il confond motivation et punition.', isCorrect: false },
+        { id: 'copie', label: 'B', text: 'Copier exactement le chemin de l’autre.', reveals: 'Copier peut rassurer, mais efface le contexte et le rythme singulier d’Éko.', isCorrect: false },
+        { id: 'etape', label: 'C', text: 'Chercher une petite étape inspirante et possible pour moi.', reveals: 'Éko croise le Spectre de Comparaison : l’inspiration aide quand elle respecte son propre chemin.', isCorrect: true },
+      ],
+    },
   },
   {
     id: 'oracle-algorithme',
@@ -58,6 +106,18 @@ export const archetypes = [
     question: 'Qui décide de ce que je vois, et comment puis-je reprendre la main ?',
     wisdom: 'Je peux interroger ce qui me guide.',
     resource: 'Changer volontairement de source, de rythme ou de sujet.',
+    situation: 'La légende raconte que l’Oracle Algorithme commence à parler à Éko par recommandations successives. Chaque contenu semble deviner son humeur avant lui. L’Oracle propose une route confortable, presque magique. Mais Éko se demande si cette route élargit vraiment son monde ou si elle le ramène toujours au même couloir.',
+    deepNeed: 'garder une marge de choix face aux suggestions.',
+    transnumeristWisdom: 'interroger l’algorithme transforme la recommandation en matière à explorer.',
+    storyReveal: 'L’Oracle propose à Éko des routes séduisantes. Éko devient explorateur lorsqu’il demande : pourquoi cette route, et quelles autres routes existent ?',
+    debate: {
+      prompt: 'Énigme : l’Oracle Algorithme dit “je sais ce que tu veux”. Quelle formule rend Éko acteur de sa route ?',
+      choices: [
+        { id: 'suivre', label: 'A', text: 'Suivre l’Oracle : s’il propose, c’est que c’est bon pour moi.', reveals: 'L’Oracle peut aider, mais le suivre sans questionner réduit la liberté d’exploration.', isCorrect: false },
+        { id: 'questionner', label: 'B', text: 'Me demander pourquoi cela apparaît et choisir aussi d’autres sources.', reveals: 'Éko croise l’Oracle Algorithme : questionner ce qui guide permet de reprendre la main.', isCorrect: true },
+        { id: 'combat', label: 'C', text: 'Considérer toute recommandation comme ennemie.', reveals: 'Tout refuser rend l’Oracle menaçant, alors que l’enjeu est plutôt d’apprendre à dialoguer avec lui.', isCorrect: false },
+      ],
+    },
   },
   {
     id: 'corps-oublie',
@@ -70,6 +130,18 @@ export const archetypes = [
     question: 'Que demande le corps pendant que l’esprit reste connecté ?',
     wisdom: 'Mon corps est une boussole fiable.',
     resource: 'Boire de l’eau, étirer les épaules, respirer quatre fois lentement.',
+    situation: 'La légende raconte que, pendant une nuit de mix et de messages, Éko reste immobile devant l’Ékran. Son avatar danse, son IA répond, le public réagit. Mais ses épaules se crispent, sa gorge sèche, ses yeux piquent. Le Corps Oublié frappe doucement à la porte de la légende.',
+    deepNeed: 'rester relié aux besoins physiques et émotionnels.',
+    transnumeristWisdom: 'le corps n’interrompt pas l’aventure : il indique comment la continuer en santé.',
+    storyReveal: 'Au cœur du BiG BUG, Éko réalise que son corps n’est pas un obstacle à la connexion. C’est son premier instrument de navigation.',
+    debate: {
+      prompt: 'Énigme : pendant le direct, Éko oublie son corps. Quel indice doit redevenir prioritaire ?',
+      choices: [
+        { id: 'statistiques', label: 'A', text: 'Les statistiques du direct.', reveals: 'Les chiffres informent, mais ne disent pas si Éko va bien.', isCorrect: false },
+        { id: 'besoin', label: 'B', text: 'Un besoin simple : boire, bouger, souffler, dormir.', reveals: 'Éko croise le Corps Oublié : les besoins simples sont des boussoles fiables.', isCorrect: true },
+        { id: 'avatar', label: 'C', text: 'L’énergie affichée par son avatar.', reveals: 'L’avatar peut sembler infatigable, contrairement au corps vivant.', isCorrect: false },
+      ],
+    },
   },
   {
     id: 'gardien-seuil',
@@ -82,5 +154,17 @@ export const archetypes = [
     question: 'Quelle règle simple protège mon attention sans me punir ?',
     wisdom: 'Dire stop est une compétence de soin.',
     resource: 'Définir une heure de fermeture et préparer une activité de retour.',
+    situation: 'La légende raconte qu’à l’aube, Éko arrive devant le dernier seuil du BiG BUG. Derrière lui : les écrans, les IA, les avatars, les messages. Devant lui : une journée réelle à habiter. Le Gardien du Seuil ne lui demande pas de rejeter la technologie, mais d’apprendre à refermer une porte pour mieux en ouvrir une autre.',
+    deepNeed: 'avoir des limites qui protègent sans exclure.',
+    transnumeristWisdom: 'fermer l’écran consciemment permet d’intégrer l’expérience à la vie réelle.',
+    storyReveal: 'Éko ne devient pas transnumériste en fuyant les écrans. Il le devient en apprenant à ouvrir, traverser et refermer les seuils.',
+    debate: {
+      prompt: 'Énigme : à la fin de la traversée, quelle clé permet à Éko d’intégrer les écrans et ses IA à sa vie sans s’y perdre ?',
+      choices: [
+        { id: 'sans-fin', label: 'A', text: 'Rester disponible tant qu’il reste des notifications.', reveals: 'Les notifications n’ont pas de fin naturelle : elles ne peuvent pas décider seules du seuil.', isCorrect: false },
+        { id: 'rituel', label: 'B', text: 'Créer un rituel de fermeture et une activité de retour.', reveals: 'Éko croise le Gardien du Seuil : un rituel aide à passer du réseau à la présence.', isCorrect: true },
+        { id: 'interdiction', label: 'C', text: 'S’interdire tous les écrans pour toujours.', reveals: 'L’interdiction totale peut protéger un moment, mais la sagesse d’Éko consiste à intégrer harmonieusement le pharmakon.', isCorrect: false },
+      ],
+    },
   },
 ]
