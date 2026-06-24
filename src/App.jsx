@@ -94,21 +94,11 @@ export default function App() {
         const choice = choices[item.id]
         const correctChoice = item.debate.choices.find((option) => option.isCorrect)
         const reveal = choice
-          ? `
-Choix du groupe : ${choice.text}
-${choice.isCorrect ? 'Point gagné' : `Bonne réponse révélée : ${correctChoice.text}`}
-Besoin profond : ${item.deepNeed}
-Sagesse : ${item.transnumeristWisdom}`
+          ? `\nChoix du groupe : ${choice.text}\n${choice.isCorrect ? 'Point gagné' : `Bonne réponse révélée : ${correctChoice.text}`}\nBesoin profond : ${item.deepNeed}\nSagesse : ${item.transnumeristWisdom}`
           : ''
-        return `${item.name}
-${item.wisdom}${reveal}
-Ressource : ${item.resource}`
+        return `${item.name}\n${item.wisdom}${reveal}\nRessource : ${item.resource}`
       })
-      .join('
-
----
-
-')
+      .join('\n\n---\n\n')
     downloadFile('synthese-eko.txt', body || 'Aucun fragment restauré.', 'text/plain')
   }
 
